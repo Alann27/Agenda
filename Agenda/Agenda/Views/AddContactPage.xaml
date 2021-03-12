@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agenda.Views.AddContactPage"
+             Title="New user">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding AddContactCommand}"/>
+        <ToolbarItem IconImageSource="moreIcon"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid ColumnDefinitions="1*,9*" RowDefinitions="0.75*,Auto,*,*,*,*,Auto,*,Auto,*,*" IsClippedToBounds="True" Padding="0">
+
+
+        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" HeightRequest="50" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <Label Text="Save To" TextColor="Black" VerticalTextAlignment="Center" Margin="15,0" FontAttributes="Bold" FontSize="18"/>
+            <Frame CornerRadius="25" Margin="5" Padding="0" WidthRequest="220">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="{Binding UserIconImage}" Margin="10" HeightRequest="25"/>
+                    <Label Text="email@gmail.com" TextColor="Black" VerticalTextAlignment="Center"/>
+                    <Button Text="V" HorizontalOptions="EndAndExpand" CornerRadius="25" WidthRequest="50" BackgroundColor="White"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+
+
+        <Frame Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="50"  HorizontalOptions="Center"
+                    HeightRequest="100" WidthRequest="100" BackgroundColor="DodgerBlue" IsClippedToBounds="True" Padding="0" Margin="0,10,0,30">
+
+                <Grid  IsClippedToBounds="True">
+                    <Image Source="{Binding CameraIconImage}" x:Name="imageOfContact"  VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding ContactNoHasPhoto}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PickPhotoCommand}" CommandParameter="{x:Reference imageOfContact}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image Source="{Binding NewContact.PhotoContact}" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding ContactHasPhoto}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PickPhotoCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </Grid>
+
+            </Frame>
+
+
+
+
+        <Image Source="{Binding UserIconImage}" Grid.Column="0" Grid.Row="2" Margin="10"/>
+
+        <Entry Placeholder="First Name" Text="{Binding NewContact.Name}" Style="{StaticResource nameEntryStyle}" Grid.Column="1" Grid.Row="2" PlaceholderColor="Red" Margin="10,7.5,50,10"/>
+        <Entry Placeholder="Last Name" Style="{StaticResource nameEntryStyle}" Margin="10,7.5,50,20" Grid.Column="1" Grid.Row="3"/>
+
+        <Image Source="{Binding CompanyIconImage}" Grid.Column="0" Grid.Row="4" HeightRequest="25" Margin="10"/>
+
+        <Entry Placeholder="Company" Style="{StaticResource nameEntryStyle}" Grid.Column="1" Margin="10,0,50,20" Grid.Row="4"/>
+        
+        <Image Source="{Binding PhoneIconImage}" Grid.Column="0" Grid.Row="5" Margin="10"/>
+        
+        <Entry Placeholder="Phone" Text="{Binding NewContact.PhoneNumber}" Margin="10,7.5,50,10" Style="{StaticResource phoneNumberEntryStyle}" Grid.Column="1" Grid.Row="5" PlaceholderColor="Red"/>
+        <Picker Title="Mobile" Grid.Column="1" Grid.Row="6" Margin="10,7.5,300,20"/>
+
+        <Image Source="{Binding MailIconImage}" Grid.Column="0" Grid.Row="7" Margin="10"/>
+
+        <Entry Placeholder="Email" Style="{StaticResource nameEntryStyle}" Grid.Column="1" Grid.Row="7" Margin="10,7.5,50,10"/>
+        <Picker Title="Home" Grid.Column="1" Grid.Row="8" Margin="10,7.5,300,20"/>
+
+        <Label Text="More fields" TextColor="DodgerBlue" FontAttributes="Bold" Grid.Column="1" Margin="15" Grid.Row="9" FontSize="17"/>
+
+        <Button Text="Add" Command="{Binding AddContactCommand}" Style="{StaticResource newButtonStyle}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="10"/>
+
+
+
+    </Grid>
+
+        
+</ContentPage>

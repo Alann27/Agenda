@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agenda.Views.EditContactPage">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource stackLayoutStyle}">
+            <Entry Text="{Binding ContactToEdit.Name}" Style="{StaticResource nameEntryStyle}"/>
+            <Entry Text="{Binding ContactToEdit.PhoneNumber}" Style="{StaticResource phoneNumberEntryStyle}"/>
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                <Button Text="Save contact" Style="{StaticResource newButtonStyle}" Command="{Binding EditContactCommand}"/>
+                <Button Text="Back" Style="{StaticResource newButtonStyle}" Command="{Binding BackCommand}"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

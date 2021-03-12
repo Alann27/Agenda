@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agenda.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" x:Key="nameEntryStyle">
+                <Setter Property="Placeholder" Value="Name"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Keyboard" Value="Text"/>
+                <Setter Property="Margin" Value="10,10"/>
+            </Style>
+
+            <Style TargetType="Entry" x:Key="phoneNumberEntryStyle">
+                <Setter Property="Placeholder" Value="Phone number"/>
+                <Setter Property="FontSize" Value="19"/>
+                <Setter Property="Keyboard" Value="Telephone"/>
+                <Setter Property="MaxLength" Value="10"/>
+                <Setter Property="Margin" Value="10,10"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="newButtonStyle">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+
+            <Style TargetType="StackLayout" x:Key="stackLayoutStyle">
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Margin" Value="25"/>
+            </Style>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

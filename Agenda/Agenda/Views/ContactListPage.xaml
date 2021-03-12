@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agenda.Views.ContactListPage"
+             Title="Contact list"
+             x:Name="contactListPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Priority="0" Text="Add" Command="{Binding AddContactCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+
+        <Frame BackgroundColor="White" CornerRadius="15" Padding="0"  Margin="15,15,15,0" HasShadow="True">
+            
+            <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="10">
+                <Image Source="{Binding MenuIconImage}" HeightRequest="25" Margin="10,0"/>
+                <Entry Placeholder="Search contacts" FontSize="18" TextColor="Gray" WidthRequest="330" HorizontalOptions="CenterAndExpand" />
+                <Image Source="{Binding MoreIconImage}" Aspect="AspectFit" HeightRequest="25" HorizontalOptions="End" Margin="10,0"/>
+                <Image Source="{Binding PersonIconImage}" Aspect="AspectFit" HeightRequest="25" HorizontalOptions="End" Margin="10,0"/>
+            </StackLayout>
+            
+        </Frame>
+
+        <Grid RowDefinitions="*" ColumnDefinitions="*">
+            <ListView x:Name="MyListView"
+                    ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContactCommand}" HasUnevenRows="True" Margin="15,3,15,1" Grid.Row="0" Grid.Column="0">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" Command="{Binding Source={x:Reference contactListPage}, Path=BindingContext.DeleteContactCommand}" CommandParameter="{Binding}"/>
+                                <MenuItem Text="More" Command="{Binding Source={x:Reference contactListPage}, Path=BindingContext.MoreCommand}" CommandParameter="{Binding}"/>
+                            </ViewCell.ContextActions>
+
+
+                            <StackLayout Orientation="Horizontal" Margin="5">
+
+                                <Frame  Margin="10,2" BackgroundColor="LightGreen" CornerRadius="360" HeightRequest="25" WidthRequest="25">
+                                    <Label  Text="{Binding FirstLetterName}" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                </Frame>
+                                <StackLayout Orientation="Vertical" Margin="2">
+                                    <Label Text="{Binding Name}" FontSize="20" TextColor="Black" Margin="1"/>
+                                    <Label Text="{Binding PhoneNumber}" FontSize="17" TextColor="Gray" Margin="2"/>
+                                </StackLayout>
+
+
+
+                            </StackLayout>
+
+
+
+                        </ViewCell>
+
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <Button Text="+" Command="{Binding AddContactCommand}" FontSize="30" BackgroundColor="DodgerBlue" TextColor="White" VerticalOptions="End" HorizontalOptions="End" Margin="30" CornerRadius="360" HeightRequest="65" WidthRequest="65"/>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>
