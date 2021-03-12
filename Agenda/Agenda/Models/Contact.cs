@@ -12,7 +12,7 @@ namespace Agenda.Models
             Name = name;
             PhoneNumber = phoneNumber;
             FirstLetterName = name.Length >= 1 ? name.Substring(0, 1).ToUpper() : "";
-            PhotoContact = "cameraIcon.png";
+            PhotoContact = "";
         }
 
         public Contact()
